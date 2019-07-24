@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Instance</title>
+</head>
+
+<body>
+
+    <div id="app">
+       <input type="text" v-model="message"><br>
+       {{ message }}
+       
+       <h4>What food to your eat today ?</h4>
+       <input type="checkbox" value="Pizza" v-model="foods"> Pizza
+       <input type="checkbox" value="Padthai" v-model="foods"> Padthai
+       <input type="checkbox" value="Fried Checken" v-model="foods"> Fried Checken<br>
+
+       {{ foods }}
+
+       <h4>Select gender</h4>
+       <input type="radio" name="gender" value="Male" v-model="gender"> Male
+       <input type="radio" name="gender" value="Female" v-model="gender"> Female<br>
+
+       {{ gender }}
+
+       <h4>Select your career</h4>
+       <select  v-model="career">
+            <option value="" selected>Please select your career</option>
+            <option value="Police">Police</option>
+            <option value="Doctor">Doctor</option>
+            <option value="Teacher">Teacher</option>
+       </select><br><br>
+
+       {{ career }}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                message: "Hello World",
+                foods: [],
+                gender:'',
+                career:''
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Instance</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <h2>Product list</h2>
+        <ul>
+            <li v-for="product in products">{{ product }}</li>
+        </ul>
+        <h2>Person list</h2>
+        <ul>
+            <li v-for="person in persons">{{ person.name }} ({{ person.age }}) 
+                <span v-if="person.age < 18">Teenage</span>
+                <span v-if="person.age > 18">Adult</span>
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+               products:['Coffee','Tea','Milk','Cola'],
+               persons: [
+                    { name: 'Samit', age: 33, status: false },
+                    { name: 'Sirirat', age: 28, status: true },
+                    { name: 'Nara', age: 12, status: false },
+                ]
+            },
+            methods: {
+              
+            }
+        })
+    </script>
+</body>
+
+</html>

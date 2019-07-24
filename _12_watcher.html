@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Watcher</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <label for="">Employee name:</label>
+        <input type="text" ref="inputEmp" v-model="newEmp.empName"><br>
+
+        <label for="">Employee salary:</label>
+        <input type="text" v-model="newEmp.empSalary" @keyup.enter="addEmp"><br><br>
+
+        <button @click="addEmp">Add</button>
+
+        <h2>Employee List</h2>
+        <ul>
+            <li v-for="employee in employees">{{ employee.empName }} ({{ employee.empSalary }})</li>
+        </ul>
+        <h2>Total Salary</h2>
+        {{ summation }}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                newEmp:{
+                    empName:'',
+                    empSalary:''
+                },
+                employees: [
+                    {
+                        empName: 'Samit Koyom',
+                        empSalary: 20000
+                    },
+                    {
+                        empName: 'John Doe',
+                        empSalary: 35000
+                    },
+                ]
+            },
+            methods: {
+                addEmp:function(){
+                    this.employees.push({
+                        empName: this.newEmp.empName,
+                        empSalary: this.newEmp.empSalary
+                    })
+                    // Clear form
+                    this.newEmp.empName = ''
+                    this.newEmp.empSalary = 0
+                    // Focus input empName
+                    this.$refs.inputEmp.focus()
+                },
+                // Send salary to server
+                saveToServer:function(){
+                    let data = this.summation
+                    console.log("Sending " + data + " to server ...")
+                }
+            },
+            computed:{
+                summation:function(){
+                    let sum = this.employees.reduce(function (value, data){
+                        return value + Number(data.empSalary)
+                    }, 0)
+                    return sum
+                }
+            },
+            watch: {
+                summation:function(){
+                    this.saveToServer()
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
