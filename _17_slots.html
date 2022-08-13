@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Slots</title>
+</head>
+<body>
+    
+        <div id="app">
+
+            <food-app>
+                <h2>อาหารภาคเหนือ</h2>
+                <ul>
+                    <li>Menu 1</li>
+                    <li>Menu 3</li>
+                </ul>
+            </food-app>
+            <food-app>
+                    <h2>อาหารภาคใต้</h2>
+                    <ul>
+                        <li>Menu 1</li>
+                        <li>Menu 2</li>
+                    </ul>
+            </food-app>
+
+            <template id="foodarea">
+                <div>
+                    <slot></slot>
+                </div> 
+            </template>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+        <script src="app.js"></script>
+</body>
+</html>
