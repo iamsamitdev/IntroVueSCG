@@ -1,0 +1,54 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Props</title>
+</head>
+
+<body>
+    <div id="app">
+        <post post-title-video="Vue js tutorial"></post>
+        <showview video-title="Food Panda" v-bind:video-view="5000"></showview>
+        <showview video-title=""></showview>
+        <showview></showview>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+
+        Vue.component('post', {
+            props: ['postTitleVideo'],
+            template: '<h2>{{ postTitleVideo }}</h2>'
+        })
+
+        Vue.component('showview',{
+            props:{
+                videoTitle:{
+                    type: String,
+                    required:true,
+                    validator: videoTitle => {
+                        return videoTitle != ''
+                    }
+                },
+                videoView:{
+                    type: Number,
+                    default: 0
+                }
+            },
+            template:
+                `<div>
+                    <h1>{{ videoTitle }} ({{ videoView }})</h1>
+                    <p>some thing for connent here</p>
+                </div>`
+        });
+
+
+        let app = new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+
+</html>
